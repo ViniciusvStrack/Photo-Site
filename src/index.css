@@ -1,0 +1,352 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --bg-main: #FDFCF9;          /* Luminous warm cream */
+  --bg-surface: #FFFFFF;       /* Clean pure white */
+  --bg-surface-alt: #F5F2EB;   /* Delicate sand ivory */
+  --bg-surface-hover: #EFECE6; /* Subtle hover beige */
+  --border-color: rgba(160, 150, 135, 0.22);
+  --border-color-strong: rgba(160, 150, 135, 0.45);
+  --text-primary: #1C1B18;     /* Deep espresso charcoal */
+  --text-secondary: #5C5850;   /* Warm medium gray */
+  --text-muted: #8A857B;       /* Dusty beige gray */
+  --accent-gold: #B8860B;      /* Warm cognac gold */
+  --accent-champagne: #C5A059; /* Radiant champagne */
+  --accent-terracotta: #A86A3D;/* Earthy terracotta */
+  --accent-sage: #5F7367;      /* Gourmet sage green */
+  --accent-burgundy: #8B4F58;  /* Editorial burgundy */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Gourmet Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFCF9;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1CCC2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B5AFA4;
+}
+
+/* Gourmet Typography */
+.gourmet-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', 'Didot', 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.gourmet-serif {
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Times New Roman', serif;
+}
+
+.gourmet-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+.gourmet-mono {
+  font-family: 'Space Mono', 'Consolas', monospace;
+  letter-spacing: -0.01em;
+}
+
+/* Color Helpers */
+.bg-gourmet-main { background-color: var(--bg-main) !important; }
+.bg-gourmet-surface { background-color: var(--bg-surface) !important; }
+.bg-gourmet-alt { background-color: var(--bg-surface-alt) !important; }
+.bg-gourmet-dark { background-color: #1C1B18 !important; color: #FDFCF9 !important; }
+.text-dark-espresso { color: #1C1B18 !important; }
+.text-warm-gray { color: #5C5850 !important; }
+.text-muted-warm { color: #8A857B !important; }
+.text-gold { color: #B8860B !important; }
+.text-terracotta { color: #A86A3D !important; }
+.border-warm { border: 1px solid var(--border-color) !important; }
+.border-warm-strong { border: 1px solid var(--border-color-strong) !important; }
+
+/* Gourmet Cards */
+.card-gourmet {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(28, 27, 24, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-gourmet:hover {
+  box-shadow: 0 20px 45px rgba(28, 27, 24, 0.09);
+  transform: translateY(-4px);
+  border-color: var(--border-color-strong);
+}
+
+.card-gourmet-alt {
+  background-color: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-gourmet-alt:hover {
+  box-shadow: 0 15px 35px rgba(28, 27, 24, 0.06);
+  transform: translateY(-3px);
+  border-color: var(--border-color-strong);
+}
+
+/* Gourmet Buttons */
+.btn-gourmet-primary {
+  background: linear-gradient(135deg, #1C1B18 0%, #2B2A27 100%);
+  color: #FFFFFF !important;
+  border: 1px solid #1C1B18;
+  padding: 12px 28px;
+  border-radius: 50rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 20px rgba(28, 27, 24, 0.15);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.btn-gourmet-primary:hover {
+  background: #000000;
+  box-shadow: 0 12px 28px rgba(28, 27, 24, 0.28);
+  transform: translateY(-2px);
+  color: #FFFFFF !important;
+}
+
+.btn-gourmet-outline {
+  background: #FFFFFF;
+  color: #1C1B18 !important;
+  border: 1px solid rgba(28, 27, 24, 0.28);
+  padding: 12px 28px;
+  border-radius: 50rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+.btn-gourmet-outline:hover {
+  background: #F5F2EB;
+  border-color: #1C1B18;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  color: #1C1B18 !important;
+}
+
+.btn-gourmet-gold {
+  background: linear-gradient(135deg, #C5A059 0%, #A88339 100%);
+  color: #FFFFFF !important;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 20px rgba(197, 160, 89, 0.25);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.btn-gourmet-gold:hover {
+  box-shadow: 0 12px 28px rgba(197, 160, 89, 0.4);
+  transform: translateY(-2px);
+  color: #FFFFFF !important;
+}
+
+/* Gourmet Badges & Pills */
+.badge-gourmet {
+  background-color: #F5F2EB;
+  color: #5C5850;
+  border: 1px solid rgba(160, 150, 135, 0.3);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 50rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-gold {
+  background-color: rgba(197, 160, 89, 0.14);
+  color: #8C6A28;
+  border: 1px solid rgba(197, 160, 89, 0.38);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 50rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-terracotta {
+  background-color: rgba(168, 106, 61, 0.12);
+  color: #9E5B2E;
+  border: 1px solid rgba(168, 106, 61, 0.32);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 50rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-sage {
+  background-color: rgba(95, 115, 103, 0.14);
+  color: #43584C;
+  border: 1px solid rgba(95, 115, 103, 0.35);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 50rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Glassmorphism in Light Mode */
+.backdrop-blur-md {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.backdrop-blur-sm {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-slide-down {
+  animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.transition-all {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hover-scale {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-scale:hover {
+  transform: translateY(-4px) scale(1.015);
+}
+
+/* Group hover overrides */
+.group:hover .hover-overlay {
+  opacity: 1 !important;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Text truncate helpers */
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tracking-tight { letter-spacing: -0.035em !important; }
+.tracking-wider { letter-spacing: 0.08em !important; }
+.tracking-widest { letter-spacing: 0.15em !important; }
+.fs-7 { font-size: 0.8rem !important; }
+
+/* --- 100% RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS --- */
+@media (max-width: 768px) {
+  .display-2 { font-size: 2.5rem !important; }
+  .display-4 { font-size: 2rem !important; }
+  .display-5 { font-size: 1.75rem !important; }
+  .display-6 { font-size: 1.5rem !important; }
+
+  .btn-gourmet-primary,
+  .btn-gourmet-outline,
+  .btn-gourmet-gold {
+    padding: 10px 22px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .card-gourmet,
+  .card-gourmet-alt {
+    padding: 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Ensure touch targets are at least 44px */
+  button, a.btn, input, select {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 576px) {
+  .display-2 { font-size: 2.1rem !important; }
+  .display-4 { font-size: 1.7rem !important; }
+  
+  .navbar-brand { font-size: 1.15rem !important; }
+  
+  .badge-gourmet,
+  .badge-gold,
+  .badge-terracotta,
+  .badge-sage {
+    padding: 4px 10px !important;
+    font-size: 0.68rem !important;
+  }
+}
