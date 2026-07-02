@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { createSchema } from './db/schema';
 import { seedDatabase } from './db/seeder';
+import { connectMongoDB } from './db/mongodb';
 import { errorHandler } from './middleware/errorHandler';
 
 // Route imports
@@ -35,7 +36,7 @@ app.use('/api/services', servicesRoutes);
 app.use('/api/bookings', bookingsRoutes);
 app.use('/api/payments', paymentsRoutes);
 app.use('/api/portal', portalRoutes);
-app.use('/api', generalRoutes); // /api/health, /api/testimonials, /api/team
+app.use('/api', generalRoutes); // /api/health, /api/testimonials, /api/team, /api/ai/chat
 
 // Default root route
 app.get('/', (req, res) => {
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
     name: 'LUMEN STUDIO API - Fotografia 4K ProRAW',
     status: 'running',
     version: '1.0.0-PRO',
+    mode: process.env.MONGODB_URI ? 'Cloud MongoDB Atlas' : 'Local SQLite Native',
     documentation: 'Check /api/health for system status and database metrics.'
   });
 });
@@ -54,8 +56,19 @@ app.use(errorHandler);
 const startServer = async () => {
   try {
     console.log('[Server] Starting LUMEN STUDIO API engine...');
-    await createSchema();
-    await seedDatabase();
+    
+    // Check if MongoDB cloud connection string is provided in .env
+    if (process.env.MONGODB_URI) {
+      console.log('☁️ [Cloud Mode] MONGODB_URI detectada! Conectando ao MongoDB Atlas...');
+      await connectMongoDB(process.env.MONGODB_URI);
+      // Ensure SQLite fallback schema is also ready for hybrid offline use
+      await createSchema();
+      await seedDatabase();
+    } else {
+      console.log('💻 [Local Mode] Usando motor de banco de dados SQLite nativo (data/lumen_studio.sqlite)...');
+      await createSchema();
+      await seedDatabase();
+    }
 
     app.listen(PORT, () => {
       console.log(`\n======================================================`);
@@ -64,6 +77,7 @@ const startServer = async () => {
       console.log(`🔍 Health Check:  http://localhost:${PORT}/api/health`);
       console.log(`📸 Fotos API:     http://localhost:${PORT}/api/photos`);
       console.log(`📅 Reservas API:  http://localhost:${PORT}/api/bookings`);
+      console.log(`☁️ Modo DB:       ${process.env.MONGODB_URI ? 'MongoDB Atlas Nuvem' : 'SQLite WebAssembly Local'}`);
       console.log(`======================================================\n`);
     });
   } catch (err) {
